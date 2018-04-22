@@ -4,33 +4,41 @@ import json
 #Priority formula:
 #100/(daysTilDue)*(difficulty)
 
-class taskList:
-    class task:
-        def __init__(name,difficulty,duedate,repeat):
-            self._name = name
-            self._difficulty = difficulty
-            self._duedate = duedate
-            self._repeat = repeat
+def getTasks(userName):
+    if(os.path.isfile("users/" + userName)):
+        print("exists")
+    else:
+        f = open("users/" + userName,"w+")
+        #TODO init file
+        f.close()
+    f = open("users/" + userName,"r")
+    json_dict = json.loads(f.read().strip())
 
-    def getTasks(userName):
-        if(os.path.isfile("users/" + userName)):
-            print("exists")
-            f = open("users/" + userName,"w")
-        else:
-            f = open("users/" + userName,"w+")
-            #TODO init file
-        json_dict = json.loads(f)
 
-        #TODO create JSON object and return it in priority queue older
-        for task in json_dict['tasks']:
-            print(task)
-        return 0;
-
-    def addTask(userName,name,difficulty,duedate,repeat):
-        f = open("users/" + userName,"w")
-        #TODO create hash somehow?
-        #TODO append json file
+    #TODO create JSON object and return it in priority queue older
     
-    def removeTask(userName,taskHash):
-        print("totally removing it")
-        #TODO actually remove teh task
+    #id
+    #task_name
+    #time_to_do
+    #default = false
+    #done = false
+    #hash
+
+    for task in json_dict['tasks']:
+        print(task)
+    return 0;
+
+def addTask(userName,name,difficulty,duedate,repeat):
+    f = open("users/" + userName,"w")
+    h = generateHash(dudedate,difficulty,name)
+    
+    #TODO append json file
+
+def removeTask(userName,taskHash):
+    print("totally removing it")
+    #TODO actually remove the task
+
+def generateHash(dudedate,difficulty,name):
+        return hash(str(duedate)+str(difficulty)+str(name))
+
+
