@@ -1,23 +1,20 @@
 import json
-import requests
+import http.server
 
-class Interfacer():
-    def __init__(front_end_url, port):
-        self.fe_url = front_end_url
-        self.port = port
-    
-    def send(queue, uid):
-        output_raw = []
-
-        for element in queue:
-            entry = {}
-            entry['name'] = element.name
-            entry['due_date'] = element.due_date
-
-            output_raw.append(element)
-
-        json_str = json.dumps(output_raw)
-        
-
-    def get():
+class Interfacer:
+    def __init__(self, server):
         pass
+
+    class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+        def __init__(self, server):
+            self.server = server
+            super.__init__(self)
+
+        def do_HEAD(self):
+            pass
+        
+        def do_POST(self):
+            output_raw = {}
+
+    def __init__(self, u):
+        self.user = u
