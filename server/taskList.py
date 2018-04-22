@@ -23,12 +23,13 @@ def getTasks(userName):
     #default = false
     #done = false
     #hash
+    #how_long_it_takes
 
     for task in json_dict['tasks']:
         print(task)
     return 0;
 
-def addTask(userName,name,difficulty,duedate,repeat):
+def addTask(userName,name,difficulty,duedate,timeToDo,repeat):
     f = open("users/" + userName,"w")
     h = generateHash(dudedate,difficulty,name)
     
